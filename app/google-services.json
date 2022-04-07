@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "185378644200",
+    "project_id": "chatapp-5840b",
+    "storage_bucket": "chatapp-5840b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185378644200:android:a769f4deb96a81608aa95d",
+        "android_client_info": {
+          "package_name": "com.marianunez.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185378644200-ubrutdnui8q0ja26p0hbt1s3p5do33e7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD62LYBwIkvsk9Txt4DNNS8mhWTgFvlOGU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185378644200-ubrutdnui8q0ja26p0hbt1s3p5do33e7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

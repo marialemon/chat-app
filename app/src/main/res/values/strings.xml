@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Chat App</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="title_activity_chat">Chat Activity</string>
+    <string name="send_message">Send</string>
+    <string name="no_messages">No messages</string>
+    <string name="create_chat">Create Chat</string>
+    <string name="no_chats">No Chats</string>
+</resources>
