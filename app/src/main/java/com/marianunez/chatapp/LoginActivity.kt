@@ -20,10 +20,10 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance() // 2. initialize FirebaseAuth
 
-        initUi()
+        initUI()
     }
 
-    private fun initUi() {
+    private fun initUI() {
         if (auth.currentUser != null) {
             goToChats()
         }
@@ -36,17 +36,21 @@ class LoginActivity : AppCompatActivity() {
             startActivity<SignUpActivity>()
         }
 
-        binding.forgotPassword.setOnClickListener{
+        binding.forgotPassword.setOnClickListener {
             resetPassword()
         }
     }
 
     private fun handleLogIn() {
         when {
-            !isEmailValid(binding.emailInput.text.toString()) -> binding.emailLayout.error = "Email not valid"
-            !isPasswordValid(binding.passwordInput.text.toString()) -> binding.passwordLayout.error = "Password not valid"
+            !isEmailValid(binding.emailInput.text.toString()) -> binding.emailLayout.error =
+                "Email not valid"
+            !isPasswordValid(binding.passwordInput.text.toString()) -> binding.passwordLayout.error =
+                "Password not valid"
             else -> {
                 binding.apply {
+                    emailLayout.isErrorEnabled = false
+                    passwordLayout.isErrorEnabled = false
                     loading.visibility = View.VISIBLE
                 }
                 handleAuthentication()
@@ -57,11 +61,11 @@ class LoginActivity : AppCompatActivity() {
     private fun isEmailValid(email: String): Boolean = email.contains("@") && email.isNotBlank()
     private fun isPasswordValid(password: String): Boolean = password.length > 7
 
-    private fun handleInputFields(){
+    private fun handleInputFields() {
         // TODO
     }
 
-    // Firebase things
+    // ************* Firebase things
     private fun handleAuthentication() {
         auth.signInWithEmailAndPassword(
             binding.emailInput.text.toString(),
@@ -69,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
         ).addOnCompleteListener { task ->
             if (task.isComplete && task.isSuccessful) {
                 goToChats()
-                Toast.makeText(this, "Done", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Hello ${auth.currentUser?.displayName}!", Toast.LENGTH_LONG).show()
             } else {
                 binding.loading.visibility = View.GONE
                 Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show()
@@ -77,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun resetPassword(){
+    private fun resetPassword() {
         auth.sendPasswordResetEmail(
             binding.emailInput.text.toString()
         ).addOnCompleteListener { task ->
@@ -88,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-    // End of Firebase things
+    // ************* End of Firebase things
 
     private fun goToChats() {
         startActivity<ChatActivity>()
