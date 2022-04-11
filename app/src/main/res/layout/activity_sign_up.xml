@@ -4,64 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/dimen_xxl"
     android:orientation="vertical"
+    android:padding="@dimen/dimen_xxl"
     tools:context=".SignUpActivity">
 
-    <EditText
-        android:id="@+id/userNameInput"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/usernameLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="emailAddress"
         android:hint="User name"
-        android:inputType="textEmailAddress"
-        android:paddingVertical="@dimen/dimen_default"
-        app:layout_constraintBottom_toTopOf="@+id/passwordField" />
+        android:selectAllOnFocus="true">
 
-    <EditText
-        android:id="@+id/emailInput"
+        <EditText
+            android:id="@+id/userNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="User name"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="emailAddress"
         android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:paddingVertical="@dimen/dimen_default"
-        app:layout_constraintBottom_toTopOf="@+id/passwordField" />
+        android:selectAllOnFocus="true"
+        app:layout_constraintBottom_toTopOf="@+id/passwordField">
 
-    <EditText
-        android:id="@+id/passwordInput"
+        <EditText
+            android:id="@+id/emailInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="emailAddress"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="password"
         android:hint="Password"
-        android:inputType="textPassword"
-        android:paddingVertical="@dimen/dimen_default"
-        app:layout_constraintTop_toBottomOf="@+id/emailField" />
+        android:selectAllOnFocus="true"
+        app:layout_constraintTop_toBottomOf="@+id/emailField">
 
-    <EditText
-        android:id="@+id/passwordRepeatInput"
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordRepeatInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="password"
         android:hint="Repeat password"
-        android:inputType="textPassword"
-        android:paddingVertical="@dimen/dimen_default"
-        app:layout_constraintTop_toBottomOf="@+id/emailField" />
+        android:selectAllOnFocus="true"
+        app:layout_constraintTop_toBottomOf="@+id/emailField">
+
+        <EditText
+            android:id="@+id/passwordRepeatInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/signUpButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimen_default"
+        android:padding="@dimen/dimen_default"
         android:text="sign up" />
 
     <ProgressBar
         android:id="@+id/loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
 </LinearLayout>
