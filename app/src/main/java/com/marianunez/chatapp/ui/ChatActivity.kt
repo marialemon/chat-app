@@ -1,4 +1,4 @@
-package com.marianunez.chatapp
+package com.marianunez.chatapp.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -8,9 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.marianunez.chatapp.R
 import com.marianunez.chatapp.commons.startActivity
 import com.marianunez.chatapp.databinding.ActivityChatBinding
-import com.marianunez.chatapp.fragments.CreateChatDialogFragment
+import com.marianunez.chatapp.ui.fragments.CreateChatDialogFragment
 
 class ChatActivity : AppCompatActivity() {
 

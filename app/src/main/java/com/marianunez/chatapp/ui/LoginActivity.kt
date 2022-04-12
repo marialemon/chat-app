@@ -1,4 +1,4 @@
-package com.marianunez.chatapp
+package com.marianunez.chatapp.ui
 
 import android.os.Bundle
 import android.view.View
