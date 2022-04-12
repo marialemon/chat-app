@@ -1,6 +1,5 @@
 package com.marianunez.chatapp.commons
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -14,7 +13,7 @@ fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View =
         .from(context)
         .inflate(layoutRes, this, false)
 
-inline fun <reified T: Activity> Context.startActivity() =
+inline fun <reified T> Context.startActivity() =
     startActivity(Intent(this, T::class.java))
 
 
