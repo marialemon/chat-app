@@ -1,9 +1,11 @@
 package com.marianunez.chatapp.ui.adapters
 
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
@@ -57,5 +59,31 @@ abstract class FirestoreAdapter<ViewHolder : RecyclerView.ViewHolder?>(private v
         snapshots.removeAt(change.oldIndex)
         notifyItemRemoved(change.oldIndex)
     }
+
+    override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+        if (error != null) {
+            Log.w(TAG, "onEvent: Error", error)
+            return
+        }
+
+        if (value != null) {
+            for (change in value.documentChanges) {
+                when (change.type) {
+                    DocumentChange.Type.ADDED -> onDocumentAdded(change)
+                    DocumentChange.Type.MODIFIED -> onDocumentMofified(change)
+                    DocumentChange.Type.REMOVED -> onDocumentRemoved(change)
+                }
+            }
+        }
+        onDataChanged()
+    }
+
+    protected open fun onError(error: FirebaseFirestoreException?) {}
+    protected open fun onDataChanged() {}
+
+    override fun getItemCount(): Int = snapshots.size
+
+    protected fun getSnapshot(index: Int): DocumentSnapshot = snapshots[index]
+
 
 }
