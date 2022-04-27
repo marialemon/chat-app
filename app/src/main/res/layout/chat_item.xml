@@ -16,11 +16,13 @@
         android:padding="@dimen/dimen_default">
 
         <TextView
+            android:id="@+id/chatName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Chat Name" />
 
         <TextView
+            android:id="@+id/chatDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Chat Description" />
