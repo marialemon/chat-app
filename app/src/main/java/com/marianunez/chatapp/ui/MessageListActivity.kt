@@ -33,7 +33,7 @@ class MessageListActivity : AppCompatActivity() {
         const val KEY_CHAT_ID = "key_restaurant_id"
         const val KEY_CHAT_NAME = "key_channel_name"
         private const val MESSAGE_COLLECTION = "messages"
-        private const val CHAT_COLLECTION = "channels"
+        private const val CHAT_COLLECTION = "chats"
         private const val TIMESTAMP = "timestamp"
     }
 
@@ -97,27 +97,12 @@ class MessageListActivity : AppCompatActivity() {
         val chatReference = chatReference.collection(MESSAGE_COLLECTION).document()
         val currentUser = auth.currentUser
         val message =
-            MessageResponse(text, currentUser?.uid ?: "", currentUser?.displayName ?: "", null)
+            MessageResponse(currentUser?.uid ?: "", currentUser?.displayName ?: "", text, null)
 
         return firestore.runTransaction {
             it[chatReference] = message
             null
         }
-    }
-
-    private fun reset() {
-        binding.messageField.setText("")
-        val view = currentFocus
-
-        if (view != null) {
-            (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
-                view.windowToken,
-                0
-            )
-        }
-
-        recyclerView.smoothScrollToPosition(recyclerView.adapter!!.itemCount - 1)
-        binding.messageField.clearFocus()
     }
 
     private fun sendClicked(view: View) {
@@ -130,4 +115,17 @@ class MessageListActivity : AppCompatActivity() {
             }
     }
 
+    private fun reset() {
+        binding.messageField.setText("")
+        val view = currentFocus
+
+        if (view != null) {
+            (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
+                view.windowToken,
+                0
+            )
+        }
+        recyclerView.smoothScrollToPosition(recyclerView.adapter!!.itemCount - 1)
+        binding.messageField.clearFocus()
+    }
 }
