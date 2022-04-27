@@ -91,12 +91,11 @@ class CreateChatDialogFragment : DialogFragment() {
     @Composable
     fun InputTextFields() {
         // this var will be observed by this composable function
-        var text by remember {
-            mutableStateOf("")
-        }
+        var chatName by remember { mutableStateOf("") }
+
         OutlinedTextField(
-            value = text,
-            onValueChange = { text = it },
+            value = chatName,
+            onValueChange = { chatName = it },
             label = { Text(text = "Enter name") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             modifier = Modifier
@@ -104,9 +103,11 @@ class CreateChatDialogFragment : DialogFragment() {
                 .padding(horizontal = 16.dp),
         )
 
+        var chatDescription by remember { mutableStateOf("") }
+
         OutlinedTextField(
-            value = text,
-            onValueChange = { text = it },
+            value = chatDescription,
+            onValueChange = { chatDescription = it },
             label = { Text(text = "Enter description") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             modifier = Modifier
@@ -164,6 +165,8 @@ class CreateChatDialogFragment : DialogFragment() {
     }
 
     private fun onCreateClicked() {
-     //   val chat = ChatResponse(null)
+        val chat = ChatResponse(id = "", name = "", description = "")
+        chatListener?.onChat(chat)
+        dismiss()
     }
 }
