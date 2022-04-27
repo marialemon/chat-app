@@ -10,7 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatApp">
         <activity
-            android:name=".ui.ChatActivity"
+            android:name=".ui.MessageListActivity"
+            android:exported="false"
+            android:label="@string/title_activity_chat"
+            android:theme="@style/Theme.ChatApp.NoActionBar" />
+        <activity
+            android:name=".ui.ChatListActivity"
             android:exported="false"
             android:label="@string/title_activity_chat"
             android:theme="@style/Theme.ChatApp.NoActionBar" />
