@@ -39,7 +39,7 @@ import androidx.fragment.app.DialogFragment
 import com.marianunez.chatapp.data.network.response.ChatResponse
 import com.marianunez.chatapp.ui.theme.ChatAppTheme
 
-class CreateChatDialogFragment : DialogFragment(), View.OnClickListener {
+class CreateChatDialogFragment : DialogFragment() {
 
     interface ChatListener {
         fun onChat(chat: ChatResponse)
@@ -83,14 +83,13 @@ class CreateChatDialogFragment : DialogFragment(), View.OnClickListener {
                 Title()
                 CloseButton()
             }
-            InputTextField("Enter name")
-            InputTextField("Enter description")
+            InputTextFields()
             ModalButton(text = "Create")
         }
     }
 
     @Composable
-    fun InputTextField(label: String) {
+    fun InputTextFields() {
         // this var will be observed by this composable function
         var text by remember {
             mutableStateOf("")
@@ -98,7 +97,17 @@ class CreateChatDialogFragment : DialogFragment(), View.OnClickListener {
         OutlinedTextField(
             value = text,
             onValueChange = { text = it },
-            label = { Text(text = label) },
+            label = { Text(text = "Enter name") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+        )
+
+        OutlinedTextField(
+            value = text,
+            onValueChange = { text = it },
+            label = { Text(text = "Enter description") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             modifier = Modifier
                 .fillMaxWidth()
@@ -147,10 +156,6 @@ class CreateChatDialogFragment : DialogFragment(), View.OnClickListener {
         }
     }
 
-    override fun onClick(v: View) {
-        // TODO
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is ChatListener) {
@@ -159,6 +164,6 @@ class CreateChatDialogFragment : DialogFragment(), View.OnClickListener {
     }
 
     private fun onCreateClicked() {
-        val chat = ChatResponse(null)
+     //   val chat = ChatResponse(null)
     }
 }
