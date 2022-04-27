@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_xs"
+    android:orientation="vertical"
+    android:outlineAmbientShadowColor="@color/lightGrey"
     app:cardBackgroundColor="@color/darkGrey"
     app:cardCornerRadius="@dimen/dimen_default"
-    android:layout_marginHorizontal="@dimen/dimen_default"
-    app:cardUseCompatPadding="true" >
+    >
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dimen_default"
-        >
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_xs">
 
         <TextView
             android:id="@+id/userName"
@@ -34,13 +36,14 @@
         <TextView
             android:id="@+id/timeSent"
             android:layout_width="wrap_content"
+            android:textColor="@color/darkGrey"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:textColor="@color/darkWhite"
             android:textSize="11sp"
             tools:text="10:30" />
 
     </RelativeLayout>
+
 
 </androidx.cardview.widget.CardView>
