@@ -1,5 +1,6 @@
 package com.marianunez.chatapp.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +28,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -34,13 +36,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.DialogFragment
-import com.marianunez.chatapp.databinding.FragmentCreateChatDialogBinding
+import com.marianunez.chatapp.data.network.response.ChatResponse
 import com.marianunez.chatapp.ui.theme.ChatAppTheme
 
 class CreateChatDialogFragment : DialogFragment(), View.OnClickListener {
 
-    private var _binding: FragmentCreateChatDialogBinding? = null
-    private val binding get() = _binding!!
+    interface ChatListener {
+        fun onChat(chat: ChatResponse)
+    }
+
+    private var chatListener: ChatListener? = null
 
     companion object {
         //la TAG es útil para identificar el fragment
@@ -51,9 +56,8 @@ class CreateChatDialogFragment : DialogFragment(), View.OnClickListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentCreateChatDialogBinding.inflate(inflater, container, false)
-        binding.modalCompose.apply {
+    ): View? {
+        return ComposeView(requireContext()).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 ChatAppTheme {
@@ -66,7 +70,6 @@ class CreateChatDialogFragment : DialogFragment(), View.OnClickListener {
                 }
             }
         }
-        return binding.root
     }
 
     @Composable
@@ -97,7 +100,9 @@ class CreateChatDialogFragment : DialogFragment(), View.OnClickListener {
             onValueChange = { text = it },
             label = { Text(text = label) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
         )
     }
 
@@ -146,12 +151,14 @@ class CreateChatDialogFragment : DialogFragment(), View.OnClickListener {
         // TODO
     }
 
-    private fun onCreateClicked() {
-        //TODO
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is ChatListener) {
+            chatListener = context
+        }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun onCreateClicked() {
+        val chat = ChatResponse(null)
     }
 }
