@@ -3,6 +3,7 @@
     <dimen name="dimen_xxs">4dp</dimen>
     <dimen name="dimen_xs">8dp</dimen>
     <dimen name="dimen_default">16dp</dimen>
+    <dimen name="dimen_l">24dp</dimen>
     <dimen name="dimen_xl">32dp</dimen>
     <dimen name="dimen_xxl">48dp</dimen>
 </resources>

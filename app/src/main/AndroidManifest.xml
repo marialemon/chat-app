@@ -12,12 +12,12 @@
         <activity
             android:name=".ui.MessageListActivity"
             android:exported="false"
-            android:label="@string/title_activity_chat"
+            android:label="@string/title_activity_message_list"
             android:theme="@style/Theme.ChatApp.NoActionBar" />
         <activity
             android:name=".ui.ChatListActivity"
             android:exported="false"
-            android:label="@string/title_activity_chat"
+            android:label="@string/title_activity_chat_list"
             android:theme="@style/Theme.ChatApp.NoActionBar" />
         <activity
             android:name=".ui.SignUpActivity"
