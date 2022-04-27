@@ -30,8 +30,8 @@ class MessageListActivity : AppCompatActivity() {
 
     companion object {
         private const val LIMIT = 50
-        const val KEY_CHAT_ID = "key_restaurant_id"
-        const val KEY_CHAT_NAME = "key_channel_name"
+        const val KEY_CHAT_ID = "key_chat_id"
+        const val KEY_CHAT_NAME = "key_chat_name"
         private const val MESSAGE_COLLECTION = "messages"
         private const val CHAT_COLLECTION = "chats"
         private const val TIMESTAMP = "timestamp"
