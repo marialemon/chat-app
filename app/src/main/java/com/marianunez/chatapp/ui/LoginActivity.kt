@@ -95,7 +95,7 @@ class LoginActivity : AppCompatActivity() {
     // ************* End of Firebase things
 
     private fun goToChats() {
-        startActivity<ChatActivity>()
+        startActivity<ChatListActivity>()
         finish()
     }
 

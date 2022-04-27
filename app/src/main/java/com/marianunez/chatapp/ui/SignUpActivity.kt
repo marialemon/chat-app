@@ -61,7 +61,7 @@ class SignUpActivity : AppCompatActivity() {
                                 .build()
                             auth.currentUser?.updateProfile(newUser)
 
-                            startActivity<ChatActivity>()
+                            startActivity<ChatListActivity>()
                             finish()
                         } else {
                             binding.loading.visibility = View.GONE
