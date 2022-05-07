@@ -22,12 +22,13 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:cardCornerRadius="@dimen/dimen_default"
-            app:cardElevation="@dimen/cardview_default_elevation"
+            app:cardElevation="@dimen/dimen_default"
             app:cardUseCompatPadding="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/toolbar"
+            app:layout_constraintVertical_bias="0.3"
             tools:visibility="visible">
 
             <LinearLayout
@@ -61,33 +62,36 @@
             android:id="@+id/messageList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/messageField"
+            app:layout_constraintBottom_toTopOf="@+id/messageInputWrapper"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             tools:itemCount="13"
             tools:listitem="@layout/message_item" />
 
-        <EditText
-            android:id="@+id/messageField"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/messageInputWrapper"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/dimen_default"
-            android:layout_marginStart="@dimen/dimen_xs"
-            android:background="@drawable/bg_rounded"
-            android:padding="@dimen/dimen_default"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/sendButton"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/sendButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_default"
-            android:contentDescription="@string/send_message"
-            android:src="@android:drawable/ic_menu_send"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/messageField" />
+            <EditText
+                android:id="@+id/messageField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_xs"
+                android:layout_weight="1"
+                android:background="@drawable/bg_rounded"
+                android:padding="@dimen/dimen_default" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/sendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_default"
+                android:contentDescription="@string/send_message"
+                android:src="@android:drawable/ic_menu_send" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -22,12 +22,13 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:cardCornerRadius="@dimen/dimen_default"
-            app:cardElevation="@dimen/cardview_default_elevation"
+            app:cardElevation="@dimen/dimen_default"
             app:cardUseCompatPadding="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/toolbar"
+            app:layout_constraintVertical_bias="0.3"
             tools:visibility="visible">
 
             <LinearLayout
